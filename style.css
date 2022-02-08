@@ -1,0 +1,63 @@
+body{
+    background-color: #F3F3F3;
+}
+
+.topo{
+    height: 80px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.logo, .menu{
+    margin: 0 22px;
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+}
+.mensagens{
+    background-color: #F3F3F3;
+    margin-top: 26px;
+}
+.msg p{
+    padding: 15px 10px;
+    margin-bottom: 8px;
+}
+.msg{
+    border-radius: 2px;
+}
+.horario{
+    color:#AAAAAA;
+}
+
+.entrou-saiu{
+    background-color: #DCDCDC;
+}
+.para-alguem{
+    background-color: #ffffff;
+}
+.reservado{
+    background-color: #FFDEDE;
+}
+
+.caixa-msg{
+    height: 80px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position:fixed;
+    bottom: 0;
+    background-color: #FFFFFF;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+}
+.enviar-msg{
+    font-size: 30px;
+}
+.mensagem{
+    font-size: 18px;
+}
+.enviar-msg, .mensagem{
+    margin: 0 22px;
+}

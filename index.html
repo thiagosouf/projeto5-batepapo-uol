@@ -4,9 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bate-Papo UOL</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <header class="topo">
+        <div class="logo">
+            <img src="./img/logo.png" alt="logo">
+        </div>
+        <div class="menu">
+            <ion-icon name="people"></ion-icon>
+        </div>
+    </header>
+
+
+    <main class="mensagens">
+        <div class="msg entrou-saiu">
+            <p> <span class="horario">(09:21:45)</span>  <strong>João</strong>  entra na sala...</p>
+        </div>
+        <div class="msg para-alguem">
+            <p><span class="horario">(09:22:28)</span> <strong>João</strong>  para <strong>Todos</strong>:  Bom dia</p>
+        </div>
+        <div class="msg para-alguem">
+            <p><span class="horario">(09:22:38)</span> <strong>Maria</strong> para <strong>João</strong>:  Oi João :)</p>
+        </div>
+        <div class="msg reservado">
+            <p><span class="horario">(09:22:48)</span>  <strong>João</strong> reservadamente para <strong>Maria</strong>:  Oi gatinha quer tc?</p>
+        </div>
+        <div class="msg entrou-saiu">
+            <p><span class="horario">(09:22:58)</span>  <strong>Maria</strong>  sai da sala...</p>
+        </div>
+    </main>
+
+
+    <aside></aside>
+
+
+    <footer class="caixa-msg">
+        <div class="mensagem">
+            Escreva aqui...
+        </div>
+        <div class="enviar-msg">
+            <ion-icon name="paper-plane-outline"></ion-icon>
+        </div>
+    </footer>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
