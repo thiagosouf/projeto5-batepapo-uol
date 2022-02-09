@@ -1,24 +1,27 @@
 body{
     background-color: #F3F3F3;
+    font-family: 'Roboto', sans-serif;
 }
 
 .topo{
-    height: 80px;
+    width: 100vw;
+    top:0;
+    padding: 10px 22px;
     background-color: #FFFFFF;
+    position: fixed;
     display: flex;
     justify-content: space-between;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .logo, .menu{
-    margin: 0 22px;
     display: flex;
     align-items: center;
     font-size: 50px;
 }
 .mensagens{
     background-color: #F3F3F3;
-    margin-top: 26px;
+    margin: 80px 0 88px;
 }
 .msg p{
     padding: 15px 10px;
@@ -55,9 +58,69 @@ body{
 .enviar-msg{
     font-size: 30px;
 }
-.mensagem{
+.mensagem>input{
     font-size: 18px;
 }
 .enviar-msg, .mensagem{
     margin: 0 22px;
+}
+.caixa{
+    height: 100vh;
+    width: 259px;
+    background-color: #ffffff;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.esconder-menu{
+    right: -260px;
+}
+.esconder{
+    visibility: hidden;
+}
+.titulo{
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:20px;
+
+}
+.escolhas{
+    font-weight: 400;
+}
+.escolhas>div{
+    display:flex;
+    align-items: center;
+    margin: 10px 20px;
+    
+
+}
+.logo{
+    font-size: 25px;
+}
+.nomeecheck, .opcaoecheck{
+    margin-left:10px;
+    display: flex;
+    width: 190px;
+    justify-content: space-between;
+}
+.nomeecheck>ion-icon, .opcaoecheck>ion-icon{
+    color: green;
+    font-size: 20px;
+    
+}
+.sombra{
+    background-color: black;
+    opacity: 50%;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    z-index: 1;
 }
