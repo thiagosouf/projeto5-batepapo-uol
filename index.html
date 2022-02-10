@@ -13,30 +13,30 @@
 </head>
 <body>
     <div>
-        <div class="caixa esconder-menu">
+        <div class="caixa esconder-menu"> <!--esconder-menu-->
             <div class="titulo contato">
                 <p>Escolha um contato</p><p>para enviar mensagem:</p>
             </div>
             <div class="escolhas escolher-contato">
-                <div onclick="selecionar(this)"> 
+                <div class="nomeUsuarios" onclick="selecionar(this)"> 
                     <div class="logo">
                         <ion-icon name="people"></ion-icon>
                     </div>
-                    <div class="nomeecheck"><p>Todos</p><ion-icon name="checkmark"></ion-icon>
+                    <div class="nomeecheck"><p>Todos</p><ion-icon name="checkmark" class="checkmark"></ion-icon>
                     </div>
+                </div>
+                <!-- <div onclick="selecionar(this)">
+                    <div class="logo">
+                        <ion-icon name="person-circle"></ion-icon>
+                    </div>
+                    <div class="nomeecheck"><p>Joao</p><ion-icon name="checkmark" class="checkmark-hidden"></ion-icon></div>
                 </div>
                 <div onclick="selecionar(this)">
                     <div class="logo">
                         <ion-icon name="person-circle"></ion-icon>
                     </div>
-                    <div class="nomeecheck"><p>Joao</p></div>
-                </div>
-                <div onclick="selecionar(this)">
-                    <div class="logo">
-                        <ion-icon name="person-circle"></ion-icon>
-                    </div>
-                    <div class="nomeecheck in"><p>Maria</p></div>
-                </div>
+                    <div class="nomeecheck in"><p>Maria</p><ion-icon name="checkmark" class="checkmark-hidden"></ion-icon></div>
+                </div> -->
             </div>
             <div class="titulo visibilidade">
                 <p>Escolha a visibilidade:</p>
@@ -91,11 +91,12 @@
             <ion-icon name="paper-plane-outline"></ion-icon>
         </button>
     </footer>
-    <!-- meu script -->
-    <script src="./script.js"></script>
+    
     <!-- minhas bibliotecas -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- meu script -->
+    <script src="./script.js"></script>
 </body>
 </html>
