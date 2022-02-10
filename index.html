@@ -7,51 +7,95 @@
     <title>Bate-Papo UOL</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div>
+        <div class="caixa esconder-menu">
+            <div class="titulo contato">
+                <p>Escolha um contato</p><p>para enviar mensagem:</p>
+            </div>
+            <div class="escolhas escolher-contato">
+                <div onclick="selecionar(this)"> 
+                    <div class="logo">
+                        <ion-icon name="people"></ion-icon>
+                    </div>
+                    <div class="nomeecheck"><p>Todos</p><ion-icon name="checkmark"></ion-icon>
+                    </div>
+                </div>
+                <div onclick="selecionar(this)">
+                    <div class="logo">
+                        <ion-icon name="person-circle"></ion-icon>
+                    </div>
+                    <div class="nomeecheck"><p>Joao</p></div>
+                </div>
+                <div onclick="selecionar(this)">
+                    <div class="logo">
+                        <ion-icon name="person-circle"></ion-icon>
+                    </div>
+                    <div class="nomeecheck in"><p>Maria</p></div>
+                </div>
+            </div>
+            <div class="titulo visibilidade">
+                <p>Escolha a visibilidade:</p>
+            </div>
+            <div class="escolhas escolher-visibilidade">
+                <div onclick="selecionarVisibilidade(this)">
+                    <div class="logo">
+                        <ion-icon name="lock-open"></ion-icon>
+                    </div>
+                    <div class="opcaoecheck">
+                        <p>Público</p><ion-icon name="checkmark"></ion-icon>
+                    </div>
+                </div>
+                <div onclick="selecionarVisibilidade(this)">
+                    <div class="logo">
+                        <ion-icon name="lock-closed"></ion-icon>
+                        
+                    </div>
+                    <div class="opcaoecheck">
+                        <p>Reservadamente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sombra esconder" onclick="sair()"></div>
+    </div>
     <header class="topo">
         <div class="logo">
-            <img src="./img/logo.png" alt="logo">
+            <img src="./img/logo.png" alt="logo" >
         </div>
-        <div class="menu">
+        <div class="menu" onclick="menuLateral()">
             <ion-icon name="people"></ion-icon>
         </div>
     </header>
 
 
-    <main class="mensagens">
+    <div class="mensagens">
         <div class="msg entrou-saiu">
             <p> <span class="horario">(09:21:45)</span>  <strong>João</strong>  entra na sala...</p>
         </div>
-        <div class="msg para-alguem">
-            <p><span class="horario">(09:22:28)</span> <strong>João</strong>  para <strong>Todos</strong>:  Bom dia</p>
-        </div>
-        <div class="msg para-alguem">
-            <p><span class="horario">(09:22:38)</span> <strong>Maria</strong> para <strong>João</strong>:  Oi João :)</p>
-        </div>
-        <div class="msg reservado">
-            <p><span class="horario">(09:22:48)</span>  <strong>João</strong> reservadamente para <strong>Maria</strong>:  Oi gatinha quer tc?</p>
-        </div>
-        <div class="msg entrou-saiu">
-            <p><span class="horario">(09:22:58)</span>  <strong>Maria</strong>  sai da sala...</p>
-        </div>
-    </main>
+        <!-- aqui fica a conversa -->
+    </div>
 
-
-    <aside></aside>
+    </div>
 
 
     <footer class="caixa-msg">
         <div class="mensagem">
-            Escreva aqui...
+            <input type="text" placeholder="Escreva aqui..." class="mensagem-escrita">
         </div>
-        <div class="enviar-msg">
+        <button class="enviar-msg" onclick="adicionarMensagem()">
             <ion-icon name="paper-plane-outline"></ion-icon>
-        </div>
+        </button>
     </footer>
-
-
+    <!-- meu script -->
+    <script src="./script.js"></script>
+    <!-- minhas bibliotecas -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>
