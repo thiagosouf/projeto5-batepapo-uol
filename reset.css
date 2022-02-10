@@ -17,6 +17,7 @@ textarea:focus,input, input:focus, select:focus {
 button{
 	border:none;
 	outline: none;
+	background-color: inherit;
 }
 
 html, body, div, span, applet, object, iframe,

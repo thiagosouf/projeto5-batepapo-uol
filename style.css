@@ -74,10 +74,13 @@ body{
     z-index: 2;
     font-size: 16px;
     line-height: 19px;
+    transition: all .2s linear;
+    transform: translateX(0);
 }
 
 .esconder-menu{
-    right: -260px;
+    transition: all .2s linear;
+    transform: translateX(260px);
 }
 .esconder{
     visibility: hidden;
