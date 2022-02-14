@@ -90,10 +90,12 @@ function renderizarmensagemBD(mensagemBD){
 
 // entrar com nome
 function adicionarNome(){
-    nome = prompt("NOME: ")
-    buscarMensagem()
+    nome = document.querySelector(".nickname").value;
+    
 
     if(nome){
+        buscarMensagem()
+        document.querySelector(".tela-de-login").classList.add("esconder")
         novoNome = {
             name: nome
         };
@@ -105,7 +107,7 @@ function adicionarNome(){
         renderizarPersonagem(novoNome);
 
     } else {
-        Alert("Esse nome já está em uso, escolha outro nome...")
+        Alert("Escolha outro nome...")
         adicionarNome()
     }
 }
@@ -179,4 +181,3 @@ function sair(){
     document.querySelector(".sombra").classList.add("esconder")
 }
 
-adicionarNome()
