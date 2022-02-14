@@ -4,23 +4,22 @@ let personagem, novoNome, novaMsg, msg
 
 // buscando nomes
 function buscarNomes() {
-    const promessa = axios.get("https://mock-api.driven.com.br/api/v4/uol/participants");
-    promessa.then(promessaCumprida);
-    console.log(promessa.then)
-  }
+    setInterval(displayHello, 3000);
+        function displayHello() {
+            const promessa = axios.get("https://mock-api.driven.com.br/api/v4/uol/participants");
+            promessa.then(promessaCumprida);
+  }}
 
 function promessaCumprida(resposta) {
     quantidadeNomes = resposta.data.length;
-    console.log(quantidadeNomes);
+    console.log("quantidade de nomes"+quantidadeNomes);
     personagem = resposta.data;
-    console.log(personagem[0].name)
     renderizarPersonagem(personagem);
     }
 function renderizarPersonagem(personagem){
     let divPersonagens = document.querySelector(".escolhas")
-    console.log("lei")
+    divPersonagens.innerHTML = ""
     for (let i = 0; i < quantidadeNomes; i++){
-        console.log(personagem[i].name);
         divPersonagens.innerHTML += `
                 <div class="nomeUsuarios" onclick="selecionar(this)"> 
                     <div class="logo">
@@ -39,24 +38,20 @@ function buscarMensagem() {
         function displayHello() {
             const promessaMensagem = axios.get("https://mock-api.driven.com.br/api/v4/uol/messages");
             promessaMensagem.then(promessaMensagemCumprida);
-            console.log(promessaMensagem.then)}
+        }
   }
 
 function promessaMensagemCumprida(resposta) {
     quantidadeMensagem = resposta.data.length;
-    console.log(quantidadeMensagem);
     mensagemBD = resposta.data;
-    console.log(mensagemBD[0].text)
     renderizarmensagemBD(mensagemBD);
         
 }
 function renderizarmensagemBD(mensagemBD){
     document.querySelector(".mensagens").innerHTML = ""
     divMensagens = document.querySelector(".mensagens")
-    console.log("lei")
     
     for (let i = 0; i < quantidadeMensagem; i++){
-        console.log(mensagemBD[i].text);
         if (mensagemBD[i].type == "status"){
             divMensagens.innerHTML += `
                 <div class="msg entrou-saiu">
@@ -89,9 +84,9 @@ function renderizarmensagemBD(mensagemBD){
 // entrar com nome
 function adicionarNome(){
     nome = prompt("NOME: ")
+    buscarMensagem()
 
     if(nome){
-        console.log("tudo certo")
         novoNome = {
             name: nome
         };
@@ -114,7 +109,6 @@ function promessaNovoNomeFalhou(erro) {
   }
   
   function promessaNovoNomeCumprida(resposta) {
-    alert("Começo de um sonho.... Deu tudo certo!!!");
     console.log(resposta);
   }
 
@@ -124,7 +118,6 @@ function adicionarMensagem(){
     msg = document.querySelector(".mensagem-escrita").value;
 
     if(msg){
-        console.log("tudo certo com a msg")
         novaMsg = {
                 from: nome,
                 to: destinatario,
@@ -162,15 +155,19 @@ function verificaStatus(){
     };
 
     const promessaStatus = axios.post("https://mock-api.driven.com.br/api/v4/uol/status",login)
-    promessaNome.then(promessaStatusCumprida); // feliz
     promessaNome.catch(promessaStatusFalhou);
-// FALTA VER A NOVA API E VER ONDE EU COLOCO O PUSH <---------
+}
+
+function promessaStatusFalhou(erro){
+    console.log("Vish, STATUS FALHOUUUUU!");
+    console.log(erro.response);
 }
 
 // menulateral
 function menuLateral(){
     document.querySelector(".caixa").classList.remove("esconder-menu")
     document.querySelector(".sombra").classList.remove("esconder")
+    buscarNomes()
 
 
 
@@ -194,34 +191,4 @@ function selecionarVisibilidade(div){
     
     } 
 
-// function adicionarMensagem(){
-//     const mensagem = document.querySelector(".mensagem-escrita").value;
-//     if(mensagem){
-//         const novaMensagem = mensagem;
-//     }
-//     console.log(mensagem)
-//     renderizarMensagens(mensagem)
-// }
-
-function renderizarMensagens(mensagem){
-    console.log(document.querySelector(".mensagens").innerHTML)
-    let caixaDeEntrada = document.querySelector(".mensagens").innerHTML
-    document.querySelector(".mensagens").innerHTML = caixaDeEntrada + 
-    `<div class="msg entrou-saiu">
-            <p> <span class="horario">(${hora()})</span>  <strong>${nome}</strong> para <strong>${checkEnviarP}</strong>:  ${mensagem}</p>
-        </div>`
-}
-
-function hora(){
-    function addZero(i) {
-        if (i < 10) {i = "0" + i}
-        return i;
-      }
-      
-      const d = new Date();
-      let h = addZero(d.getHours());
-      let m = addZero(d.getMinutes());
-      let s = addZero(d.getSeconds());
-      let time = h + ":" + m + ":" + s;
-      return time;        
-}
+adicionarNome()
