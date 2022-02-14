@@ -1,4 +1,4 @@
-let checkEnviar, checkEnviarP = "Todos", checkVisivel, checkVisivelP, nome, antigo, nomeRecebido, quantidadeNomes
+let nome, nomeRecebido, quantidadeNomes
 let destinatario = "Todos"
 let personagem, novoNome, novaMsg, msg
 
@@ -18,14 +18,21 @@ function promessaCumprida(resposta) {
     }
 function renderizarPersonagem(personagem){
     let divPersonagens = document.querySelector(".escolhas")
-    divPersonagens.innerHTML = ""
+    divPersonagens.innerHTML = 
+            `<div class="nomeUsuarios" onclick="selecionar(this)"> 
+                <div class="logo">
+                    <ion-icon name="people"></ion-icon>
+                </div>
+                <div class="nomeecheck"><p>Todos</p><ion-icon name="checkmark" class="checkmark"></ion-icon>
+                </div>
+            </div>`;
     for (let i = 0; i < quantidadeNomes; i++){
         divPersonagens.innerHTML += `
                 <div class="nomeUsuarios" onclick="selecionar(this)"> 
                     <div class="logo">
                         <ion-icon name="people"></ion-icon>
                     </div>
-                    <div class="nomeecheck"><p>${personagem[i].name}</p><ion-icon name="checkmark" class="checkmark"></ion-icon>
+                    <div class="nomeecheck"><p>${personagem[i].name}</p><ion-icon name="checkmark" class="checkmark esconder"></ion-icon>
                     </div>
                 </div>
         `;
@@ -54,25 +61,25 @@ function renderizarmensagemBD(mensagemBD){
     for (let i = 0; i < quantidadeMensagem; i++){
         if (mensagemBD[i].type == "status"){
             divMensagens.innerHTML += `
-                <div class="msg entrou-saiu">
+                <div class="msg entrou-saiu" data-identifier="message">
                 <p> <span class="horario">(${mensagemBD[i].time})</span>  <strong>${mensagemBD[i].from}</strong>  ${mensagemBD[i].text}</p>
                 </div>
             `;
         }
         if(mensagemBD[i].type == "message"){
             divMensagens.innerHTML += `
-                <div class="msg para-alguem">
+                <div class="msg para-alguem" data-identifier="message">
                 <p> <span class="horario">(${mensagemBD[i].time})</span>  <strong>${mensagemBD[i].from}</strong> para <strong>${mensagemBD[i].to}</strong>:  ${mensagemBD[i].text}</p>
                 </div>
             `;
         }
         // modificar para só ver se for pra mim
-        if(mensagemBD[i].type == "private_message"){
-            divMensagens.innerHTML += `
-                <div class="msg reservado">
-                <p> <span class="horario">(${mensagemBD[i].time})</span>  <strong>${mensagemBD[i].from}</strong> para <strong>${mensagemBD[i].to}</strong>:  ${mensagemBD[i].text}</p>
-                </div>
-            `;
+        if(mensagemBD[i].type == "private_message" && (mensagemBD[i].to === nome || mensagemBD[i].from === nome)){
+                divMensagens.innerHTML += `
+                    <div class="msg reservado" data-identifier="message">
+                    <p> <span class="horario">(${mensagemBD[i].time})</span>  <strong>${mensagemBD[i].from}</strong> para <strong>${mensagemBD[i].to}</strong>:  ${mensagemBD[i].text}</p>
+                    </div>
+                `;            
         }
 
     }
@@ -98,14 +105,14 @@ function adicionarNome(){
         renderizarPersonagem(novoNome);
 
     } else {
-        console.log("ops erro")
+        Alert("Esse nome já está em uso, escolha outro nome...")
         adicionarNome()
     }
 }
 
 function promessaNovoNomeFalhou(erro) {
-    alert("Vish, falhou a parada! Tente novamente!");
     console.log(erro.response);
+    adicionarNome()
   }
   
   function promessaNovoNomeCumprida(resposta) {
@@ -116,7 +123,7 @@ function promessaNovoNomeFalhou(erro) {
 // Enviar Mensagem
 function adicionarMensagem(){
     msg = document.querySelector(".mensagem-escrita").value;
-
+    document.querySelector("input").value = ""
     if(msg){
         novaMsg = {
                 from: nome,
@@ -137,12 +144,10 @@ function adicionarMensagem(){
 }
 
 function promessaNovaMsgFalhou(erro){
-    console.log("Vish, Msg FALHOUUUUU! Tente novamente!");
     console.log(erro.response);
 }
 
 function promessaNovaMsgCumprida(resposta) {
-    console.log("Começo de um sonho.... Deu tudo certo!!!");
     console.log(resposta);
   }
 
@@ -159,7 +164,6 @@ function verificaStatus(){
 }
 
 function promessaStatusFalhou(erro){
-    console.log("Vish, STATUS FALHOUUUUU!");
     console.log(erro.response);
 }
 
@@ -168,27 +172,11 @@ function menuLateral(){
     document.querySelector(".caixa").classList.remove("esconder-menu")
     document.querySelector(".sombra").classList.remove("esconder")
     buscarNomes()
-
-
-
-
-
-    checkVisivel = document.querySelector(".opcaoecheck")
-    checkVisivelP = document.querySelector(".opcaoecheck>p").innerHTML
 }
 
 function sair(){
     document.querySelector(".caixa").classList.add("esconder-menu")
     document.querySelector(".sombra").classList.add("esconder")
 }
-
-// fazer o if para selecionar os itens
-function selecionar(div){
-                    
-    } 
-
-function selecionarVisibilidade(div){
-    
-    } 
 
 adicionarNome()

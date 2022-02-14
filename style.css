@@ -89,9 +89,6 @@ body{
 .esconder{
     visibility: hidden;
 }
-.checkmark-hidden{
-    visibility: hidden;
-}
 
 .titulo{
     font-weight: 700;

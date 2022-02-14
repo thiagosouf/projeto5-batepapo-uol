@@ -13,11 +13,12 @@
 </head>
 <body>
     <div>
-        <div class="caixa esconder-menu"> <!--esconder-menu-->
+        <div class="caixa esconder-menu">
             <div class="titulo contato">
                 <p>Escolha um contato</p><p>para enviar mensagem:</p>
             </div>
             <div class="escolhas escolher-contato">
+                <!-- o "Todos" aparece como padrao antes de carregar os contatos -->
                 <div class="nomeUsuarios" onclick="selecionar(this)"> 
                     <div class="logo">
                         <ion-icon name="people"></ion-icon>
@@ -25,18 +26,6 @@
                     <div class="nomeecheck"><p>Todos</p><ion-icon name="checkmark" class="checkmark"></ion-icon>
                     </div>
                 </div>
-                <!-- <div onclick="selecionar(this)">
-                    <div class="logo">
-                        <ion-icon name="person-circle"></ion-icon>
-                    </div>
-                    <div class="nomeecheck"><p>Joao</p><ion-icon name="checkmark" class="checkmark-hidden"></ion-icon></div>
-                </div>
-                <div onclick="selecionar(this)">
-                    <div class="logo">
-                        <ion-icon name="person-circle"></ion-icon>
-                    </div>
-                    <div class="nomeecheck in"><p>Maria</p><ion-icon name="checkmark" class="checkmark-hidden"></ion-icon></div>
-                </div> -->
             </div>
             <div class="titulo visibilidade">
                 <p>Escolha a visibilidade:</p>
@@ -74,12 +63,7 @@
 
 
     <div class="mensagens">
-        <div class="msg entrou-saiu">
-            <p> <span class="horario">(09:21:45)</span>  <strong>João</strong>  entra na sala...</p>
-        </div>
         <!-- aqui fica a conversa -->
-    </div>
-
     </div>
 
     <!-- escreva a mensagem -->
@@ -87,7 +71,7 @@
         <div class="mensagem">
             <input type="text" placeholder="Escreva aqui..." class="mensagem-escrita">
         </div>
-        <button class="enviar-msg" onclick="adicionarMensagem()">
+        <button class="enviar-msg" data-identifier="send-message" onclick="adicionarMensagem()">
             <ion-icon name="paper-plane-outline"></ion-icon>
         </button>
     </footer>
