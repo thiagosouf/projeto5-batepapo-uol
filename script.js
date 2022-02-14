@@ -125,7 +125,7 @@ function promessaNovoNomeFalhou(erro) {
 // Enviar Mensagem
 function adicionarMensagem(){
     msg = document.querySelector(".mensagem-escrita").value;
-    document.querySelector("input").value = ""
+    document.querySelector(".mensagem-escrita").value = ""
     if(msg){
         novaMsg = {
                 from: nome,
